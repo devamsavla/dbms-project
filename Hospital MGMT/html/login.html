@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hospital Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #ffffff;
+            max-width: 400px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('login') }}" method="post">
+        <h1>Login</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

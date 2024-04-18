@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 32px;
+            color: #333333;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            border-bottom: 1px solid #eeeeee;
+            padding: 20px 0;
+        }
+        p {
+            font-size: 18px;
+            color: #555555;
+            margin: 5px 0;
+        }
+        strong {
+            font-weight: bold;
+        }
+        .icon {
+            color: #007bff;
+            margin-right: 10px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>List of Doctors</h1>
+        <ul>
+            {% for doctor in doctors %}
+            <li>
+                <p><i class="fas fa-user-md icon"></i><strong>Name:</strong> {{ doctor[1] }} {{ doctor[2] }}</p> <!-- Assuming first_name and last_name are in index 1 and 2 respectively -->
+                <p><i class="fas fa-stethoscope icon"></i><strong>Specialization:</strong> {{ doctor[3] }}</p> <!-- Assuming specialization is in index 3 -->
+                <p><i class="fas fa-envelope icon"></i><strong>Email:</strong> {{ doctor[4] }}</p> <!-- Assuming email is in index 4 -->
+                <p><i class="fas fa-phone-alt icon"></i><strong>Phone Number:</strong> {{ doctor[5] }}</p> <!-- Assuming phone_number is in index 5 -->
+                <button class="btn">Book Appointment</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

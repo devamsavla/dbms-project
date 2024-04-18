@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Patient</title>
+    <style>
+        /* Ultra-pro max legend level CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 70px; /* Top padding to prevent content from being hidden under the navbar */
+            background-color: #f8f9fa; /* Light gray background color */
+            color: #212529; /* Text color */
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            margin: 50px auto; /* Center the container vertically and horizontally */
+            background-color: #fff; /* White background color */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Box shadow for container */
+            text-align: center; /* Center align text within the container */
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #343a40; /* Dark gray text color */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff; /* Blue button background color */
+            color: #fff; /* White button text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Add padding to the button */
+            border-radius: 5px; /* Add border radius to the button */
+            text-decoration: none; /* Remove underline from the button */
+            font-size: 1rem;
+            transition: background-color 0.3s ease; /* Add transition effect to button background color */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on button hover */
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Navbar content -->
+</nav>
+
+<div class="container">
+    <div class="header">
+        <h1>Welcome to the Hospital Management System</h1>
+        <!-- Update the form action to point to the correct route -->
+        <form id="updateForm" method="POST" action="{{ url_for('update_patient', patient_id=patient_id) }}">
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name" value="{{ patient.first_name }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" value="{{ patient.last_name }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" value="{{ patient.age }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ patient.email }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" value="{{ patient.phone_number }}">
+            </div>
+            
+            <input type="submit" class="btn btn-primary" value="Update">
+        </form>
+    </div>
+</div>
+
+<!-- Add your scripts here -->
+<script>
+    // Ultra-pro max legend level JavaScript enhancements
+    const updateForm = document.getElementById('updateForm');
+    updateForm.addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+        
+        // Perform any client-side validation or additional processing here
+        
+        // Submit the form using AJAX
+        const formData = new FormData(updateForm);
+        fetch(updateForm.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Optionally, display a success message or redirect the user
+                console.log('Form submitted successfully');
+            } else {
+                // Optionally, display an error message to the user
+                console.error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error submitting form:', error);
+        });
+    });
+</script>
+</body>
+</html>
